@@ -3,6 +3,7 @@ const http = require("http");
 const socketio = require("socket.io");
 const path = require("path");
 const app = express();
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
@@ -11,6 +12,9 @@ const io = socketio(server);
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Middleware for Cross-Origin Requests
+app.use(cors());
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));

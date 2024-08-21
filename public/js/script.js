@@ -1,4 +1,7 @@
-const socket = io();
+const socket = io({
+    transports: ['websocket', 'polling'],
+    upgrade: false
+});
 
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition((position) => {
